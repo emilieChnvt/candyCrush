@@ -19,6 +19,8 @@ const candyColors = [
     function createBoard(){
         for(let i = 0; i < width*width ; i++){
             const square = document.createElement("div");
+            let randomColor = Math.floor(Math.random()*candyColors.length);
+            console.log(randomColor);
             grid.appendChild(square);
             squares.push(squares)
         }
