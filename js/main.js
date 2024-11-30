@@ -11,6 +11,7 @@ const candyColors = [
     'blue',
     'purple',
     'pink',
+    'yellow',
 
 ]
 
@@ -20,7 +21,7 @@ const candyColors = [
         for(let i = 0; i < width*width ; i++){
             const square = document.createElement("div");
             let randomColor = Math.floor(Math.random()*candyColors.length);
-            console.log(randomColor);
+            square.style.backgroundColor = candyColors[randomColor];
             grid.appendChild(square);
             squares.push(squares)
         }
