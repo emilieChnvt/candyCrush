@@ -14,9 +14,6 @@ const candyColors = [
     'yellow',
 
 ]
-
-
-
     function createBoard(){
         for(let i = 0; i < width*width ; i++){
             const square = document.createElement("div");
@@ -30,4 +27,12 @@ const candyColors = [
 
     }
     createBoard()
+
+    //Drag the candies
+    squares.forEach(square => square.addEventListener("dragdtart", dragStart));
+    squares.forEach(square => square.addEventListener("dragend", dragEnd));
+    squares.forEach(square => square.addEventListener("dragover", dragOver));
+    squares.forEach(square => square.addEventListener("dragenter", dragLeave));
+    squares.forEach(square => square.addEventListener("dragdrop", dragDrop);
 })
+
