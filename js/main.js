@@ -5,7 +5,14 @@ document.addEventListener('DOMContentLoaded', ()=>{
     const squares = []
 
 
+const candyColors = [
+    'red',
+    'green',
+    'blue',
+    'purple',
+    'pink',
 
+]
 
 
 
