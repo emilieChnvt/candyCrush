@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
     squares.forEach(square => square.addEventListener("dragenter", dragEnter));
     squares.forEach(square => square.addEventListener("drageleave", dragLeave));
     squares.forEach(square => square.addEventListener("drop", dragDrop))
-})
+
 
 function dragStart(){
     colorBeingDragged = this.style.backgroundColor;
@@ -48,7 +48,21 @@ function dragStart(){
     console.log("drag", this.id);// to make sure it's a number
 }
 function dragEnd(){
-    console.log("dryg", this.id);
+
+//a valid move
+    let validMoves= [
+        squareIdBeingDragged -1,
+        squareIdBeingDragged - width,
+        squareIdBeingDragged +1,
+        squareIdBeingDragged + width
+    ]; // pour se déplacer d'une case en haut, en bas, à gauche, à droite et pas ailleurs
+
+    let valideMove = validMoves.includes(squareIdBeingReplaced)
+    if(squareIdBeingDragged && valideMove){
+        squareIdBeingDragged = null;
+    }else if(squareIdBeingReplaced && !valideMove){
+        squares[squareIdBeingReplaced].style.backgroundColor = colorBeingReplaced;
+    }
 }
 function dragEnter(e){console.log("drig", this.id);
     e.preventDefault();
@@ -64,3 +78,7 @@ function dragDrop(){console.log("drog", this.id);
     squareIdBeingReplaced = parseInt(this.id)
     squares[squareIdBeingDragged].style.backgroundColor = colorBeingReplaced;
 }
+
+
+
+})
