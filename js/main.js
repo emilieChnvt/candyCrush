@@ -34,6 +34,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
     let colorBeingReplaced;
     let squareIdBeingDragged;
     let squareIdBeingReplaced;
+
     squares.forEach(square => square.addEventListener("dragstart", dragStart));
     squares.forEach(square => square.addEventListener("dragend", dragEnd));
     squares.forEach(square => square.addEventListener("dragover", dragOver));
@@ -44,8 +45,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
 
 function dragStart(){
     colorBeingDragged = this.style.backgroundColor;
-    squareIdBeingDragged= parseInt(this.id)
-    console.log("drag", this.id);// to make sure it's a number
+    squareIdBeingDragged= parseInt(this.id)// to make sure it's a number
 }
 function dragEnd(){
 
@@ -57,30 +57,32 @@ function dragEnd(){
         squareIdBeingDragged +width
     ]; // pour se déplacer d'une case en haut, en bas, à gauche, à droite et pas ailleurs
 
-    let valideMove = validMoves.includes(squareIdBeingReplaced)
+    let isValideMove = validMoves.includes(squareIdBeingReplaced)
 
-    if(squareIdBeingReplaced && valideMove){
+    if(squareIdBeingReplaced && isValideMove){
         squareIdBeingReplaced = null;
-    }else if(squareIdBeingReplaced && !valideMove){
+    }else if(squareIdBeingReplaced && !isValideMove){
         squares[squareIdBeingReplaced].style.backgroundColor = colorBeingReplaced;
         squares[squareIdBeingDragged].style.backgroundColor = colorBeingDragged;
-    }else{
+    }else
         squares[squareIdBeingDragged].style.backgroundColor = colorBeingDragged;
-    }
-}
-function dragEnter(e){console.log("drig", this.id);
-    e.preventDefault();
-}
-function dragOver(e){console.log("dreg", this.id);
-    e.preventDefault();
-}
-function dragLeave(e){console.log("drug", this.id);
 
 }
-function dragDrop(){console.log("drog", this.id);
+function dragEnter(e){
+    e.preventDefault();
+}
+function dragOver(e){
+    e.preventDefault();
+}
+function dragLeave(e){
+
+}
+function dragDrop(){
     colorBeingReplaced = this.style.backgroundColor;
+    this.style.backgroundColor = colorBeingDragged;
     squareIdBeingReplaced = parseInt(this.id)
     squares[squareIdBeingDragged].style.backgroundColor = colorBeingReplaced;
+
 }
 
 
