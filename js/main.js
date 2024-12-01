@@ -29,10 +29,33 @@ const candyColors = [
     createBoard()
 
     //Drag the candies
+
+    let colorBeingDragged
+    let colorBeingReplaced
+    let squareIdBeingDragged
+    let squareIdBeingReplaced
     squares.forEach(square => square.addEventListener("dragdtart", dragStart));
     squares.forEach(square => square.addEventListener("dragend", dragEnd));
     squares.forEach(square => square.addEventListener("dragover", dragOver));
     squares.forEach(square => square.addEventListener("dragenter", dragLeave));
-    squares.forEach(square => square.addEventListener("dragdrop", dragDrop);
+    squares.forEach(square => square.addEventListener("dragdrop", dragDrop))
 })
 
+function dragStart(){
+    colorBeingDragged = this.style.backgroundColor;
+    squareIdBeingDragged= parseInt(this.id) // to make sure it's a number
+}
+function dragEnd(){
+
+}
+function dragOver(e){
+
+}
+function dragLeave(e){
+
+}
+function dragDrop(){
+    colorBeingReplaced = this.style.backgroundColor;
+    squareIdBeingDragged = parseInt(this.id)
+    squares[squareIdBeingDragged].style.backgroundColor = colorBeingReplaced;
+}
