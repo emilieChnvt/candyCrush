@@ -52,16 +52,20 @@ function dragEnd(){
 //a valid move
     let validMoves= [
         squareIdBeingDragged -1,
-        squareIdBeingDragged - width,
+        squareIdBeingDragged -width,
         squareIdBeingDragged +1,
-        squareIdBeingDragged + width
+        squareIdBeingDragged +width
     ]; // pour se déplacer d'une case en haut, en bas, à gauche, à droite et pas ailleurs
 
     let valideMove = validMoves.includes(squareIdBeingReplaced)
-    if(squareIdBeingDragged && valideMove){
-        squareIdBeingDragged = null;
+
+    if(squareIdBeingReplaced && valideMove){
+        squareIdBeingReplaced = null;
     }else if(squareIdBeingReplaced && !valideMove){
         squares[squareIdBeingReplaced].style.backgroundColor = colorBeingReplaced;
+        squares[squareIdBeingDragged].style.backgroundColor = colorBeingDragged;
+    }else{
+        squares[squareIdBeingDragged].style.backgroundColor = colorBeingDragged;
     }
 }
 function dragEnter(e){console.log("drig", this.id);
