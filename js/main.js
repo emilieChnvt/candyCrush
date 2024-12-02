@@ -101,7 +101,6 @@ function dragDrop(){
                     squares[index].style.backgroundColor = ''; // quand il y a 3 carrées de la même couleur a côté ca supprime l couleur
                 })
             }
-
         }
     }
     checkRowForThree()
