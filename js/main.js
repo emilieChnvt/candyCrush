@@ -87,7 +87,7 @@ function dragDrop(){
 }
 
 // checking for matches
-//checkink for row of three
+//checking for row of three
     function checkRowForThree(){
         // i<61, after it's out of the grid
         for(let i = 0; i < 61 ; i++){
@@ -108,7 +108,7 @@ function dragDrop(){
         }
     }
     checkRowForThree()
-
+//checking for column of three
     function checkColumnForThree(){
         // i<47  parce que ca donne [47,55,63] au niveau de l'index des carrés d'un colonne
         for(let i = 0; i < 47 ; i++){
@@ -127,7 +127,49 @@ function dragDrop(){
     }
     checkColumnForThree()
 
+    //checking for row of Four
+    function checkRowForFour(){
+        // i<61, after it's out of the grid
+        for(let i = 0; i < 60 ; i++){
+            let rowOfFour = [i, i+1, i+2, i+3];
+            let decidedColor = squares[i].style.backgroundColor; //color of a square
+            const isBlank = squares[i].style.backgroundColor === '';
+
+            const notValidMove = [5, 6, 7, 13, 14, 15, 21, 22, 23, 29, 30, 31, 37, 38, 39, 45, 46, 47, 53, 54, 55]; // cases qui ne peuvent pas être le point de départ
+
+            if(notValidMove.includes(i))continue
+
+            if(rowOfFour.every(index => squares[index].style.backgroundColor === decidedColor && !isBlank)){
+                score +=3;
+                rowOfFour.forEach(index => {
+                    squares[index].style.backgroundColor = ''; // quand il y a 3 carrées de la même couleur a côté ca supprime l couleur
+                })
+            }
+        }
+    }
+    checkRowForFour()
+//checking for column of Four
+    function checkColumnForFour(){
+        // i<47  parce que ca donne [47,55,63] au niveau de l'index des carrés d'un colonne
+        for(let i = 0; i < 46 ; i++){
+            let columnOfFour = [i, i+width, i+width*2, i+width*3];
+            let decidedColor = squares[i].style.backgroundColor; //color of a square
+            const isBlank = squares[i].style.backgroundColor === '';
+
+
+            if(columnOfFour.every(index => squares[index].style.backgroundColor === decidedColor && !isBlank)){
+                score +=3;
+                columnOfFour.forEach(index => {
+                    squares[index].style.backgroundColor = ''; // quand il y a 3 carrées de la même couleur a côté ca supprime l couleur
+                })
+            }
+        }
+    }
+    checkColumnForFour()
+
     window.setInterval(function (){
+        checkRowForFour();
+        checkColumnForFour();
         checkRowForThree();
         checkColumnForThree();
     }, 100); //repete la fonction toutes les 100milisecondes
