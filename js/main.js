@@ -94,7 +94,11 @@ function dragDrop(){
             let decidedColor = squares[i].style.backgroundColor; //color of a square
             const isBlank = squares[i].style.backgroundColor === '';
 
-            if(rowOfThree ){}
+            if(rowOfThree.every(index =>squares[index].style.backgroundColor === decidedColor && !isBlank) ){
+                rowOfThree.forEach(index => {
+                    squares[i].style.backgroundColor = ''; // quand il y a 3 carrées de la même couleur a côté ca supprime l couleur
+                })
+            }
 
         }
     }
