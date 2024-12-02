@@ -85,6 +85,18 @@ function dragDrop(){
 
 }
 
+// checking for matches
+//checkink for row of three
+    function checkRowForThree(){
+        // i<61, after it's out of the grid
+        for(let i = 0; i < 61 ; i++){
+            let rowOfThree = [i, i+1, i+2];
+            let decidedColor = squares[i].style.backgroundColor; //color of a square
+            const isBlank = squares[i].style.backgroundColor === '';
 
+            if(rowOfThree ){}
+
+        }
+    }
 
 })
