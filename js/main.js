@@ -95,6 +95,10 @@ function dragDrop(){
             let decidedColor = squares[i].style.backgroundColor; //color of a square
             const isBlank = squares[i].style.backgroundColor === '';
 
+            const notValidMove = [6, 7, 14, 15, 22, 23, 30, 31, 38, 39, 46, 47, 54, 55]; // cases qui ne peuvent pas être le point de départ
+
+            if(notValidMove.includes(i))continue
+
             if(rowOfThree.every(index => squares[index].style.backgroundColor === decidedColor && !isBlank)){
                 score +=3;
                 rowOfThree.forEach(index => {
@@ -112,6 +116,7 @@ function dragDrop(){
             let decidedColor = squares[i].style.backgroundColor; //color of a square
             const isBlank = squares[i].style.backgroundColor === '';
 
+
             if(columnOfThree.every(index => squares[index].style.backgroundColor === decidedColor && !isBlank)){
                 score +=3;
                 columnOfThree.forEach(index => {
@@ -124,5 +129,6 @@ function dragDrop(){
 
     window.setInterval(function (){
         checkRowForThree();
+        checkColumnForThree();
     }, 100); //repete la fonction toutes les 100milisecondes
 })
