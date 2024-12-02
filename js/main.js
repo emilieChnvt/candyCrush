@@ -86,6 +86,27 @@ function dragDrop(){
 
 }
 
+
+
+//mettre candies après que les cases aient matché
+    function moveDown(){
+        // i<55, pas la dernière ligne
+        for(let i = 0; i < 55; i++){
+            // case en dessous de celle actuelle
+            if(squares[i + width].style.backgroundColor ===''){
+                //couleur de la case actuelle est copiée dans celle en dessous et supprimée de l'actuelle
+                squares[i + width].style.backgroundColor = squares[i].style.backgroundColor;
+                squares[i].style.backgroundColor ='' ;
+                const firstRow = [0,1,2,3,4,5,6,7];
+                const isFirstRow = firstRow.includes(i);
+                if(isFirstRow && squares[i].style.backgroundColor ===''){
+                    let randomColor = Math.floor(Math.random()*candyColors.length);
+                    squares[i].style.backgroundColor = candyColors[randomColor];
+                }
+            }
+        }
+    }
+
 // checking for matches
 //checking for row of three
     function checkRowForThree(){
@@ -168,6 +189,7 @@ function dragDrop(){
     checkColumnForFour()
 
     window.setInterval(function (){
+        moveDown();
         checkRowForFour();
         checkColumnForFour();
         checkRowForThree();
