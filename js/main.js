@@ -104,4 +104,8 @@ function dragDrop(){
         }
     }
     checkRowForThree()
+
+    window.setInterval(function (){
+        checkRowForThree();
+    }, 100);
 })
