@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
     const grid = document.querySelector(".grid");
     const width = 8;
     const squares = []
+    let score = 0;
 
 
     const candyColors = [
@@ -94,13 +95,14 @@ function dragDrop(){
             let decidedColor = squares[i].style.backgroundColor; //color of a square
             const isBlank = squares[i].style.backgroundColor === '';
 
-            if(rowOfThree.every(index =>squares[index].style.backgroundColor === decidedColor && !isBlank) ){
+            if(rowOfThree.every(index => squares[index].style.backgroundColor === decidedColor && !isBlank)){
+                score +=3;
                 rowOfThree.forEach(index => {
-                    squares[i].style.backgroundColor = ''; // quand il y a 3 carrées de la même couleur a côté ca supprime l couleur
+                    squares[index].style.backgroundColor = ''; // quand il y a 3 carrées de la même couleur a côté ca supprime l couleur
                 })
             }
 
         }
     }
-
+    checkRowForThree()
 })
