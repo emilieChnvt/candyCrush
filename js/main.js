@@ -1,6 +1,7 @@
 //DOMContentLoaded when the HTML document has been completely parsed.
 document.addEventListener('DOMContentLoaded', ()=>{
     const grid = document.querySelector(".grid");
+    const scoreDisplay = document.querySelector(".score");
     const width = 8;
     const squares = []
     let score = 0;
@@ -122,6 +123,7 @@ function dragDrop(){
 
             if(rowOfThree.every(index => squares[index].style.backgroundColor === decidedColor && !isBlank)){
                 score +=3;
+                scoreDisplay.innerHTML = score;
                 rowOfThree.forEach(index => {
                     squares[index].style.backgroundColor = ''; // quand il y a 3 carrées de la même couleur a côté ca supprime l couleur
                 })
@@ -140,6 +142,7 @@ function dragDrop(){
 
             if(columnOfThree.every(index => squares[index].style.backgroundColor === decidedColor && !isBlank)){
                 score +=3;
+                scoreDisplay.innerHTML = score;
                 columnOfThree.forEach(index => {
                     squares[index].style.backgroundColor = ''; // quand il y a 3 carrées de la même couleur a côté ca supprime l couleur
                 })
@@ -161,7 +164,8 @@ function dragDrop(){
             if(notValidMove.includes(i))continue
 
             if(rowOfFour.every(index => squares[index].style.backgroundColor === decidedColor && !isBlank)){
-                score +=3;
+                score +=4;
+                scoreDisplay.innerHTML = score;
                 rowOfFour.forEach(index => {
                     squares[index].style.backgroundColor = ''; // quand il y a 3 carrées de la même couleur a côté ca supprime l couleur
                 })
@@ -180,6 +184,7 @@ function dragDrop(){
 
             if(columnOfFour.every(index => squares[index].style.backgroundColor === decidedColor && !isBlank)){
                 score +=3;
+                scoreDisplay.innerHTML = score;
                 columnOfFour.forEach(index => {
                     squares[index].style.backgroundColor = ''; // quand il y a 3 carrées de la même couleur a côté ca supprime l couleur
                 })
