@@ -105,7 +105,24 @@ function dragDrop(){
     }
     checkRowForThree()
 
+    function checkColumnForThree(){
+        // i<47  parce que ca donne [47,55,63] au niveau de l'index des carrés d'un colonne
+        for(let i = 0; i < 47 ; i++){
+            let columnOfThree = [i, i+width, i+width*2];
+            let decidedColor = squares[i].style.backgroundColor; //color of a square
+            const isBlank = squares[i].style.backgroundColor === '';
+
+            if(columnOfThree.every(index => squares[index].style.backgroundColor === decidedColor && !isBlank)){
+                score +=3;
+                columnOfThree.forEach(index => {
+                    squares[index].style.backgroundColor = ''; // quand il y a 3 carrées de la même couleur a côté ca supprime l couleur
+                })
+            }
+        }
+    }
+    checkColumnForThree()
+
     window.setInterval(function (){
         checkRowForThree();
-    }, 100);
+    }, 100); //repete la fonction toutes les 100milisecondes
 })
