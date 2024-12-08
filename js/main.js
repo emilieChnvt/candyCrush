@@ -199,5 +199,5 @@ function dragDrop(){
         checkColumnForFour();
         checkRowForThree();
         checkColumnForThree();
-    }, 100); //repete la fonction toutes les 100milisecondes
+    }, 20); //repete la fonction toutes les 100milisecondes
 })
